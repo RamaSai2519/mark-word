@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import raxios from '../utils/axios_helper.js';
 import { Button, Form, Input, message } from 'antd';
 import Home from '../home/index.js';
+import { ReactTyped } from 'react-typed';
 
 function SignIn() {
   const [name, setName] = useState('');
@@ -35,7 +36,18 @@ function SignIn() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen w-full">
+    <div className="flex flex-col items-center justify-center min-h-screen w-full">
+      <div className="absolute top-10 text-5xl flex font-extrabold">
+        <ReactTyped
+          strings={[
+            `<span>Guess The</span><span class='text-[#4096ff]'> Secret Word !!</span>`,
+          ]}
+          typeSpeed={100}
+          smartBackspace={false}
+          showCursor={false}
+          contentType='html'
+        />
+      </div>
       {!submitted ? <div className="bg-lightBlack p-8 rounded-lg shadow-lg w-80">
         <Form
           layout="vertical"

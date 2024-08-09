@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Button, Form, Input } from "antd";
-import { ReactTyped } from "react-typed"; // Import ReactTyped as a named export
+import { ReactTyped } from "react-typed";
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import raxios from "../utils/axios_helper.js";
 import ProgressBar from "../components/progress/index.js";
