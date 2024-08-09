@@ -1,0 +1,8 @@
+{
+  "short_name": "Markers Jarvis",
+  "name": "Markers Jarvis Mark 1",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#000000"
+}

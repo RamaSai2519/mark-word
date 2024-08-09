@@ -1,0 +1,47 @@
+{
+  "name": "mark-word",
+  "version": "1.0.3",
+  "type": "module",
+  "author": {
+    "name": "Rama Sathya Sai",
+    "email": "ramasatahyasai2006@gmail.com"
+  },
+  "description": "A mark1 adaptation",
+  "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "antd": "^5.19.4",
+    "axios": "^1.7.3",
+    "lottie-web": "^5.12.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0",
+    "react-scripts": "^5.0.1",
+    "react-typed": "^2.0.12",
+    "source-map-explorer": "^2.5.3",
+    "winreg": "^1.2.5"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.40",
+    "tailwindcss": "^3.4.7"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
