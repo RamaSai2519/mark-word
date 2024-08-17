@@ -32,7 +32,7 @@ const Home = (name) => {
         setLoading(true);
         try {
             const response = await raxios.post('/chat', {
-                command, lang, difficulty: diff,
+                command, lang, difficulty: diff, topic,
                 session_id: localStorage.getItem('session_id'),
                 user_id: localStorage.getItem('user_id'),
             })
