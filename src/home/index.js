@@ -7,6 +7,7 @@ import ProgressBar from "../components/progress/index.js";
 import LottieConfetti from "../components/confetti/index.js";
 
 const Home = (name) => {
+    const [topic, setTopic] = useState('General');
     const [odis, setOdis] = useState(false);
     const [diff, setDiff] = useState('easy');
     const [lang, setLang] = useState('english');
@@ -65,26 +66,43 @@ const Home = (name) => {
     return (
         <div className="flex flex-col gap-5 items-center justify-center h-screen relative w-full">
             <div className="absolute flex top-4 left-4 gap-2">
-                <Select
-                    className="w-full"
-                    defaultValue={lang}
-                    onChange={(value) => setLang(value)}
-                    disabled={odis}
-                >
-                    {langs.map((lang) => (
-                        <Select.Option key={lang} value={lang}>{lang.charAt(0).toUpperCase() + lang.slice(1)}</Select.Option>
-                    ))}
-                </Select>
-                <Select
-                    defaultValue={diff}
-                    onChange={(value) => setDiff(value)}
-                    disabled={odis}
-                    className="w-full"
-                >
-                    <Select.Option value="easy">Easy</Select.Option>
-                    <Select.Option value="medium">Medium</Select.Option>
-                    <Select.Option value="hard">Hard</Select.Option>
-                </Select>
+                <Form >
+                    <Form.Item>
+                        <Select
+                            className="w-full"
+                            defaultValue={lang}
+                            onChange={(value) => setLang(value)}
+                            disabled={odis}
+                        >
+                            {langs.map((lang) => (
+                                <Select.Option key={lang} value={lang}>{lang.charAt(0).toUpperCase() + lang.slice(1)}</Select.Option>
+                            ))}
+                        </Select>
+                    </Form.Item>
+                    <Form.Item>
+                        <Select
+                            defaultValue={diff}
+                            onChange={(value) => setDiff(value)}
+                            disabled={odis}
+                            className="w-full"
+                        >
+                            <Select.Option value="easy">Easy</Select.Option>
+                            <Select.Option value="medium">Medium</Select.Option>
+                            <Select.Option value="hard">Hard</Select.Option>
+                        </Select>
+                    </Form.Item>
+                </Form>
+                <Form>
+                    <Form.Item label={"Select Topic"}>
+                        <Input
+                            className="w-full"
+                            placeholder="Enter Name"
+                            disabled={odis}
+                            value={topic}
+                            onChange={(e) => setTopic(e.target.value)}
+                        />
+                    </Form.Item>
+                </Form>
             </div>
             <Button
                 onClick={handleBack}

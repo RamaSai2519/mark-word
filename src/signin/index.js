@@ -37,7 +37,7 @@ function SignIn() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen w-full">
-      <div className="absolute top-10 text-5xl flex font-extrabold">
+      <div className="absolute top-12 text-5xl flex font-extrabold">
         <ReactTyped
           strings={[
             `<span>Guess The</span><span class='text-[#4096ff]'> Secret Word !!</span>`,
