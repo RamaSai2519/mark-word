@@ -5,7 +5,7 @@ const ProgressBar = ({ rank, word }) => {
 
   useEffect(() => {
     if (rank > 0) {
-      setProgress(100 - ((rank / 500) * 100));
+      setProgress(100 - ((rank / 1000) * 100));
     } else {
       setProgress(0);
     }

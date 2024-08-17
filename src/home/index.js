@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Select } from "antd";
 import { ReactTyped } from "react-typed";
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import raxios from "../utils/axios_helper.js";
@@ -7,6 +7,9 @@ import ProgressBar from "../components/progress/index.js";
 import LottieConfetti from "../components/confetti/index.js";
 
 const Home = (name) => {
+    const [odis, setOdis] = useState(false);
+    const [diff, setDiff] = useState('easy');
+    const [lang, setLang] = useState('english');
     const [command, setCommand] = useState('');
     const [loading, setLoading] = useState(false);
     const [currentRank, setCurrentRank] = useState(0);
@@ -28,9 +31,9 @@ const Home = (name) => {
         setLoading(true);
         try {
             const response = await raxios.post('/chat', {
-                command: command,
+                command, lang, difficulty: diff,
                 session_id: localStorage.getItem('session_id'),
-                user_id: localStorage.getItem('user_id')
+                user_id: localStorage.getItem('user_id'),
             })
 
             const output = JSON.parse(response.data.data.output);
@@ -38,6 +41,8 @@ const Home = (name) => {
             setCurrentRank(Number(output.rank));
             setCurrentWord(output.word);
             setCurrentHint(output.hint);
+            setCommand('');
+            setOdis(true);
         } catch (error) {
             console.error('Error fetching the script:', error);
         }
@@ -51,12 +56,36 @@ const Home = (name) => {
                 setShowConfetti(false);
                 localStorage.clear();
                 window.location.reload();
-                }, 6000);
+            }, 6000);
         }
     }, [currentRank]);
 
+    const langs = ['english', 'hindi', 'telugu', 'tamil', 'malayalam', 'kannada', 'marathi', 'bengali', 'punjabi'];
+
     return (
         <div className="flex flex-col gap-5 items-center justify-center h-screen relative w-full">
+            <div className="absolute flex top-4 left-4 gap-2">
+                <Select
+                    className="w-full"
+                    defaultValue={lang}
+                    onChange={(value) => setLang(value)}
+                    disabled={odis}
+                >
+                    {langs.map((lang) => (
+                        <Select.Option key={lang} value={lang}>{lang.charAt(0).toUpperCase() + lang.slice(1)}</Select.Option>
+                    ))}
+                </Select>
+                <Select
+                    defaultValue={diff}
+                    onChange={(value) => setDiff(value)}
+                    disabled={odis}
+                    className="w-full"
+                >
+                    <Select.Option value="easy">Easy</Select.Option>
+                    <Select.Option value="medium">Medium</Select.Option>
+                    <Select.Option value="hard">Hard</Select.Option>
+                </Select>
+            </div>
             <Button
                 onClick={handleBack}
                 className="absolute top-4 right-4"
